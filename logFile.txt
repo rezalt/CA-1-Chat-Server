@@ -1,0 +1,22 @@
+Sep 06, 2016 1:09:19 PM com.mycompany.ca1.server.EchoServer main
+INFO: Starting the Server
+Sep 06, 2016 1:09:19 PM com.mycompany.ca1.server.EchoServer runServer
+INFO: Server started. Listening on: 7777, bound to: localhost
+Sep 06, 2016 1:09:36 PM com.mycompany.ca1.server.EchoServer runServer
+INFO: Connected to a client
+Sep 06, 2016 1:09:37 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: FGGHGFH 
+Sep 06, 2016 1:09:37 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: FGGHGFH 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: SDF 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: SD 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: SDF 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: SDF 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: DSF 
+Sep 06, 2016 1:09:38 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message:  
