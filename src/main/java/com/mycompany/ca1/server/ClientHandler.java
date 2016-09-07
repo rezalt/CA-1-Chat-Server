@@ -26,7 +26,7 @@ public class ClientHandler extends Thread {
     private Scanner input;
     private PrintWriter writer;
     private String Username;
-    private List<ClientHandler> clients;
+    private static List<ClientHandler> clients;
 
     public Socket getSocket() {
         return socket;
@@ -61,9 +61,13 @@ public class ClientHandler extends Thread {
                 if (msg[0].equalsIgnoreCase("LOGIN") && msg.length > 1 && !usernameExists(msg[1])) {
                     Username = msg[1];
                     writer.println("Hello " + Username);
+                    sendClientList(); //Send the updated clientlist to all clients
                 }
                 message = input.nextLine(); //IMPORTANT blocking call
             }
+            
+            
+            
             Logger.getLogger(Log.LOG_NAME).log(Level.INFO, String.format("Received the message: %1$S ", message));
 //            message = input.nextLine(); //IMPORTANT blocking call
             while (!message.equals(ProtocolStrings.ARGS.LOGOUT + ":")) {
@@ -106,6 +110,18 @@ public class ClientHandler extends Thread {
 
     public void sendMessage(String message) {
         writer.println(message);
+    }
+    
+    public void sendClientList(){
+        String CLIENTLIST = ProtocolStrings.ARGS.CLIENTLIST+":";
+        for (ClientHandler client : clients) {
+            CLIENTLIST+=client.getUsername()+",";
+        }
+        CLIENTLIST=CLIENTLIST.substring(0, CLIENTLIST.length()-1);
+        
+        for (ClientHandler client : clients) {
+            client.sendMessage(CLIENTLIST);
+        }
     }
 
     private boolean usernameExists(String username) {

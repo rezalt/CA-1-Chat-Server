@@ -25,6 +25,7 @@ public class EchoServer {
         ClientHandler client = new ClientHandler(socket);
         clients.add(client);
         client.start();
+        
     }
     
     public static void removeHandler(ClientHandler client){
