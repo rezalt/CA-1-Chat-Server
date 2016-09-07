@@ -15,7 +15,7 @@ public class EchoServer {
     private static ServerSocket serverSocket;
     private String ip;
     private int port;
-    private static List<ClientHandler> clients = new ArrayList<>();
+    public static List<ClientHandler> clients = new ArrayList<>();
 
     public static void stopServer() {
         keepRunning = false;
@@ -24,9 +24,6 @@ public class EchoServer {
     private static void handleClient(Socket socket) throws IOException {
         ClientHandler client = new ClientHandler(socket);
         clients.add(client);
-        for (ClientHandler c : clients) {
-         System.out.println(c.toString());   
-        }
         client.start();
     }
     

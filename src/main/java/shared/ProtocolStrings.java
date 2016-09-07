@@ -6,6 +6,7 @@ public class ProtocolStrings {
         STOP,LOGIN,MSG,LOGOUT,CLIENTLIST,MSGRESP;
     }
     
+    public static final String STOP = "STOP";
     
     public void getMethod(String q){
         if(q.startsWith("MSG:")){
