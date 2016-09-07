@@ -61,6 +61,7 @@ public class ClientHandler extends Thread {
                 if (msg[0].equalsIgnoreCase("LOGIN") && msg.length > 1 && !usernameExists(msg[1])) {
                     Username = msg[1];
                     writer.println("Hello " + Username);
+                    clients.add(this);
                     sendClientList(); //Send the updated clientlist to all clients
                 }
                 message = input.nextLine(); //IMPORTANT blocking call
@@ -77,6 +78,9 @@ public class ClientHandler extends Thread {
                     writer.println("Already Logged in");
                 } else if (msg[0].equalsIgnoreCase("MSG")) {
                     names = msg[1].split(",");
+                    System.out.println(msg[0]);
+                    System.out.println(msg[1]);
+                    System.out.println(msg[2]);
                     if (names.length == 0) {
                         String[] tmp = {msg[1]};
                         names = tmp;
@@ -84,7 +88,7 @@ public class ClientHandler extends Thread {
                     for (String name : names) {
                         for (ClientHandler client : clients) {
                             if (client.getUsername().equals(name)) {
-                                client.sendMessage(Username+" Says:"+msg[2]);
+                                client.sendMessage(ProtocolStrings.ARGS.MSGRESP+":"+Username+":"+msg[2]);
                             }
                         }
                     }

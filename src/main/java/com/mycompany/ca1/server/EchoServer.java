@@ -23,7 +23,7 @@ public class EchoServer {
 
     private static void handleClient(Socket socket) throws IOException {
         ClientHandler client = new ClientHandler(socket);
-        clients.add(client);
+        //clients.add(client);
         client.start();
         
     }

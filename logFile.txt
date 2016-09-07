@@ -1,18 +1,22 @@
-sep. 07, 2016 11:24:36 AM com.mycompany.ca1.server.EchoServer main
+sep. 07, 2016 12:47:24 PM com.mycompany.ca1.server.EchoServer main
 INFO: Starting the Server
-sep. 07, 2016 11:24:36 AM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 12:47:24 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 07, 2016 11:24:59 AM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 12:47:40 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 11:25:16 AM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 12:47:51 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 11:26:07 AM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 12:48:09 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 11:46:38 AM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGOUT 
-sep. 07, 2016 11:46:38 AM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGOUT 
-sep. 07, 2016 11:46:44 AM com.mycompany.ca1.server.ClientHandler run
-INFO: Closed a Connection
-sep. 07, 2016 11:46:54 AM com.mycompany.ca1.server.EchoServer runServer
-INFO: Connected to a client
+sep. 07, 2016 12:48:58 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: MSG:RESPTIMM,HENRIK:HEJ 
+sep. 07, 2016 12:48:58 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: MSG:RESPTIMM,HENRIK:HEJ 
+sep. 07, 2016 12:49:44 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: MSG:TIMM,HENRIK:HEJ 
+sep. 07, 2016 12:50:06 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: MSG:TIMM,JAKOB:HEJ 
+sep. 07, 2016 12:50:06 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: MSG:TIMM,JAKOB:HEJ 
+sep. 07, 2016 12:50:36 PM com.mycompany.ca1.server.ClientHandler run
+INFO: Received the message: [A[B[A[A[A 
