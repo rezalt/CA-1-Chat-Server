@@ -26,7 +26,6 @@ public class ClientHandler extends Thread {
     private Scanner input;
     private PrintWriter writer;
     private String Username;
-    private static List<ClientHandler> clients;
 
     public Socket getSocket() {
         return socket;
@@ -36,7 +35,6 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         input = new Scanner(socket.getInputStream());
         writer = new PrintWriter(socket.getOutputStream(), true);
-        this.clients = EchoServer.clients;
         this.Username = "";
     }
 
@@ -61,7 +59,7 @@ public class ClientHandler extends Thread {
                 if (msg[0].equalsIgnoreCase("LOGIN") && msg.length > 1 && !usernameExists(msg[1])) {
                     Username = msg[1];
                     writer.println("Hello " + Username);
-                    clients.add(this);
+                    EchoServer.clients.add(this);
                     sendClientList(); //Send the updated clientlist to all clients
                 }
                 message = input.nextLine(); //IMPORTANT blocking call
@@ -86,7 +84,7 @@ public class ClientHandler extends Thread {
                         names = tmp;
                     }
                     for (String name : names) {
-                        for (ClientHandler client : clients) {
+                        for (ClientHandler client : EchoServer.clients) {
                             if (client.getUsername().equals(name)) {
                                 client.sendMessage(ProtocolStrings.ARGS.MSGRESP+":"+Username+":"+msg[2]);
                             }
@@ -118,18 +116,18 @@ public class ClientHandler extends Thread {
     
     public void sendClientList(){
         String CLIENTLIST = ProtocolStrings.ARGS.CLIENTLIST+":";
-        for (ClientHandler client : clients) {
+        for (ClientHandler client : EchoServer.clients) {
             CLIENTLIST+=client.getUsername()+",";
         }
         CLIENTLIST=CLIENTLIST.substring(0, CLIENTLIST.length()-1);
         
-        for (ClientHandler client : clients) {
+        for (ClientHandler client : EchoServer.clients) {
             client.sendMessage(CLIENTLIST);
         }
     }
 
     private boolean usernameExists(String username) {
-        for (ClientHandler client : clients) {
+        for (ClientHandler client : EchoServer.clients) {
             if (username.equalsIgnoreCase(client.getUsername())) {
                 return true;
             }
@@ -138,7 +136,7 @@ public class ClientHandler extends Thread {
     }
     
     private void printClients(){
-        for (ClientHandler client : clients) {
+        for (ClientHandler client : EchoServer.clients) {
             System.out.println(client.getUsername()+"%n");
         }
     }
