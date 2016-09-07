@@ -27,7 +27,7 @@ public class ClientHandler extends Thread {
     private Scanner input;
     private PrintWriter writer;
     private String Username;
-    private List<ClientHandler> clients = new ArrayList<>();
+    //private List<ClientHandler> clients = new ArrayList<>();
 
     public Socket getSocket() {
         return socket;
@@ -44,17 +44,17 @@ public class ClientHandler extends Thread {
     @Override
     public void run() {
         try {
-            Random r = new Random();
-            int num = r.nextInt(9999) + 1000;
-            while (true) {
-                if (num == 3675) {
-                    break;
-                }
-                writer.printf(Integer.toString(num));
-                num = r.nextInt(9999) + 1000;
-            }
-            writer.printf("%n");
-            writer.printf("Velkommen til matrix%n");
+//            Random r = new Random();
+//            int num = r.nextInt(9999) + 1000;
+//            while (true) {
+//                if (num == 3675) {
+//                    break;
+//                }
+//                writer.printf(Integer.toString(num));
+//                num = r.nextInt(9999) + 1000;
+//            }
+//            writer.printf("%n");
+//            writer.printf("Velkommen til matrix%n");
             //System.out.println(String.format("Received the message: %1$S ", message));
             String message = input.nextLine(); //IMPORTANT blocking call
             while (Username.equalsIgnoreCase("")) {
@@ -67,9 +67,7 @@ public class ClientHandler extends Thread {
                 }
                 message = input.nextLine(); //IMPORTANT blocking call
             }
-            
-            
-            
+
             Logger.getLogger(Log.LOG_NAME).log(Level.INFO, String.format("Received the message: %1$S ", message));
 //            message = input.nextLine(); //IMPORTANT blocking call
             while (!message.equals(ProtocolStrings.ARGS.LOGOUT + ":")) {
@@ -78,23 +76,27 @@ public class ClientHandler extends Thread {
                 if (msg[0].equalsIgnoreCase("LOGIN")) {
                     writer.println("Already Logged in");
                 } else if (msg[0].equalsIgnoreCase("MSG")) {
-                    names = msg[1].split(",");
-                    System.out.println(msg[0]);
-                    System.out.println(msg[1]);
-                    System.out.println(msg[2]);
-                    if (names.length == 0) {
-                        String[] tmp = {msg[1]};
-                        names = tmp;
+                    if (msg[1].equals("")) {
+                        names = new String[EchoServer.clients.size()];
+                        for (int i = 0; i < EchoServer.clients.size(); i++) {
+                            if (!EchoServer.clients.get(i).getUsername().equals(Username)) {
+                                names[i] = EchoServer.clients.get(i).getUsername();
+                            }
+                        }
+                    } else {
+                        names = msg[1].split(",");
+                        if (names.length == 0) {
+                            String[] tmp = {msg[1]};
+                            names = tmp;
+                        }
                     }
                     for (String name : names) {
                         for (ClientHandler client : EchoServer.clients) {
                             if (client.getUsername().equals(name)) {
-                                client.sendMessage(ProtocolStrings.ARGS.MSGRESP+":"+Username+":"+msg[2]);
+                                client.sendMessage(ProtocolStrings.ARGS.MSGRESP + ":" + Username + ":" + msg[2]);
                             }
                         }
                     }
-                }else if(message.equalsIgnoreCase("print clients")){
-                    printClients();
                 }
                 //writer.println(message.toUpperCase());
                 //System.out.println(String.format("Received the message: %1$S ", message.toUpperCase()));
@@ -102,7 +104,7 @@ public class ClientHandler extends Thread {
                 message = input.nextLine(); //IMPORTANT blocking call
             }
             EchoServer.clients.remove(this);
-            printClients();
+            sendClientList();
             writer.println(ProtocolStrings.ARGS.LOGOUT);//Echo the stop message back to the client for a nice closedown
             socket.close();
             //System.out.println("Closed a Connection");
@@ -116,14 +118,14 @@ public class ClientHandler extends Thread {
     public void sendMessage(String message) {
         writer.println(message);
     }
-    
-    public void sendClientList(){
-        String CLIENTLIST = ProtocolStrings.ARGS.CLIENTLIST+":";
+
+    public void sendClientList() {
+        String CLIENTLIST = ProtocolStrings.ARGS.CLIENTLIST + ":";
         for (ClientHandler client : EchoServer.clients) {
-            CLIENTLIST+=client.getUsername()+",";
+            CLIENTLIST += client.getUsername() + ",";
         }
-        CLIENTLIST=CLIENTLIST.substring(0, CLIENTLIST.length()-1);
-        
+        CLIENTLIST = CLIENTLIST.substring(0, CLIENTLIST.length() - 1);
+
         for (ClientHandler client : EchoServer.clients) {
             client.sendMessage(CLIENTLIST);
         }
@@ -137,10 +139,10 @@ public class ClientHandler extends Thread {
         }
         return false;
     }
-    
-    private void printClients(){
+
+    private void printClients() {
         for (ClientHandler client : EchoServer.clients) {
-            System.out.println(client.getUsername()+"%n");
+            System.out.println(client.getUsername() + "%n");
         }
     }
 
