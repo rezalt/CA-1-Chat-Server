@@ -1,34 +1,12 @@
-sep. 07, 2016 1:05:38 PM com.mycompany.ca1.server.EchoServer main
+sep. 07, 2016 2:03:32 PM com.mycompany.ca1.server.EchoServer main
 INFO: Starting the Server
-sep. 07, 2016 1:05:38 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 2:03:32 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 07, 2016 1:05:58 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 2:04:58 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 1:06:01 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 2:05:00 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 1:06:04 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 2:05:03 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 1:06:06 PM com.mycompany.ca1.server.EchoServer runServer
-INFO: Connected to a client
-sep. 07, 2016 1:06:43 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGIN:TIMM 
-sep. 07, 2016 1:06:43 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGIN:TIMM 
-sep. 07, 2016 1:06:57 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGOUT 
-sep. 07, 2016 1:07:00 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Closed a Connection
-sep. 07, 2016 1:08:13 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:TIMM,JAKOB:HJEJ 
-sep. 07, 2016 1:08:13 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:TIMM,JAKOB:HJEJ 
-sep. 07, 2016 1:09:36 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:JOKIM:,JAKONB:ABE 
-sep. 07, 2016 1:09:36 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:JOKIM:,JAKONB:ABE 
-sep. 07, 2016 1:10:10 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:JOKI,JAKOB:ABE 
-sep. 07, 2016 1:10:29 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:JOKIM,JAKOB:NIV 
-sep. 07, 2016 1:10:56 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 07, 2016 2:05:06 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client

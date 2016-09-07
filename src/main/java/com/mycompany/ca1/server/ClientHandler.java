@@ -8,6 +8,7 @@ package com.mycompany.ca1.server;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -26,6 +27,7 @@ public class ClientHandler extends Thread {
     private Scanner input;
     private PrintWriter writer;
     private String Username;
+    private List<ClientHandler> clients = new ArrayList<>();
 
     public Socket getSocket() {
         return socket;
@@ -35,6 +37,7 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         input = new Scanner(socket.getInputStream());
         writer = new PrintWriter(socket.getOutputStream(), true);
+        //this.clients = EchoServer.clients;
         this.Username = "";
     }
 
