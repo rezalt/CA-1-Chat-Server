@@ -1,20 +1,12 @@
-sep. 07, 2016 2:45:59 PM com.mycompany.ca1.server.EchoServer main
+Sep 08, 2016 2:47:15 PM com.mycompany.ca1.server.EchoServer main
 INFO: Starting the Server
-sep. 07, 2016 2:45:59 PM com.mycompany.ca1.server.EchoServer runServer
+Sep 08, 2016 2:47:15 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 07, 2016 2:46:04 PM com.mycompany.ca1.server.EchoServer runServer
+Sep 08, 2016 2:47:32 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 2:47:15 PM com.mycompany.ca1.server.EchoServer runServer
+Sep 08, 2016 2:47:38 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-sep. 07, 2016 2:47:50 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:TIMM:HEJ 
-sep. 07, 2016 2:47:50 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG:TIMM:HEJ 
-sep. 07, 2016 2:47:57 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: MSG::HEJ 
-sep. 07, 2016 2:48:36 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Closed a Connection
-sep. 07, 2016 2:50:31 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Received the message: LOGOUT: 
-sep. 07, 2016 2:50:31 PM com.mycompany.ca1.server.ClientHandler run
-INFO: Closed a Connection
+Sep 08, 2016 2:47:49 PM shared.ProtocolStrings message
+INFO: Received the message: MSG:JAKOB:ASDASD 
+Sep 08, 2016 2:47:56 PM shared.ProtocolStrings message
+INFO: Received the message: MSG:HENRIK:HALLØJ 
