@@ -1,12 +1,12 @@
-Sep 08, 2016 2:47:15 PM com.mycompany.ca1.server.EchoServer main
+sep. 09, 2016 1:32:34 PM com.mycompany.ca1.server.EchoServer main
 INFO: Starting the Server
-Sep 08, 2016 2:47:15 PM com.mycompany.ca1.server.EchoServer runServer
-INFO: Server started. Listening on: 8080, bound to: localhost
-Sep 08, 2016 2:47:32 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 09, 2016 1:32:34 PM com.mycompany.ca1.server.EchoServer runServer
+INFO: Server started. Listening on: 7777, bound to: localhost
+sep. 09, 2016 1:32:35 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-Sep 08, 2016 2:47:38 PM com.mycompany.ca1.server.EchoServer runServer
+sep. 09, 2016 1:32:35 PM com.mycompany.ca1.server.EchoServer runServer
 INFO: Connected to a client
-Sep 08, 2016 2:47:49 PM shared.ProtocolStrings message
-INFO: Received the message: MSG:JAKOB:ASDASD 
-Sep 08, 2016 2:47:56 PM shared.ProtocolStrings message
-INFO: Received the message: MSG:HENRIK:HALLØJ 
+sep. 09, 2016 1:32:35 PM shared.ProtocolStrings message
+INFO: Received the message: MSG:ABE1:HEJ 
+sep. 09, 2016 1:32:35 PM com.mycompany.ca1.server.EchoServer runServer
+INFO: Connected to a client
