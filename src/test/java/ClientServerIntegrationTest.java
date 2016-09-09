@@ -19,15 +19,14 @@ import static org.junit.Assert.*;
  * @author TimmosQuadros
  */
 public class ClientServerIntegrationTest {
-
-    EchoClient client;
-    EchoClient client1;
+    static EchoClient client1;
+    static EchoClient client2;
 
     public ClientServerIntegrationTest() {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws IOException {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -37,6 +36,15 @@ public class ClientServerIntegrationTest {
                 EchoServer.main(args);
             }
         }).start();
+        client1= new EchoClient();
+        client2= new EchoClient();
+        client1.connect("localhost", 7777);
+        client1.send("LOGIN:U1");
+        client1.receive();
+        client2.connect("localhost", 7777);
+        client2.send("LOGIN:U2");
+        client1.receive();
+        client2.receive();
     }
 
     @AfterClass
@@ -73,28 +81,26 @@ public class ClientServerIntegrationTest {
 //        assertTrue(client.isStopped());
 //    }
     @Test
-    public void testSendClientList() throws IOException {
-        EchoClient client = new EchoClient();
-        Echoclient1 = new EchoClient();
-        client.send("LOGIN:U1");
-        assertEquals("CLIENTLIST:U1", client.receive());
-        client1.send("LOGIN:U2");
-        assertEquals("CLIENTLIST:U1,U2", client.receive());
+    public void testLogin() throws IOException {
+        EchoClient client3 = new EchoClient();
+        client3.connect("localhost", 7777);
+        client3.send("LOGIN:U3");
+        assertEquals("CLIENTLIST:U1,U2,U3", client3.receive());
+        client3.send("LOGOUT:");
     }
 
-//    @Test
-//    public void testSendMessage() throws IOException {
-//        EchoClient client0 = new EchoClient();
-//        EchoClient client1 = new EchoClient();
-//        client0.connect("localhost", 7777);
-//        client1.connect("localhost", 7777);
-//        client0.send("LOGIN:Abe1");
-//        client1.send("LOGIN:Monkey");
-//        client0.receive();
-//        client1.receive();
-//        client0.receive();
-//        client1.send("MSG:Abe1:Hej");
-//        assertEquals("MSGRES:Monkey:Hej", client0.receive());
-//
-//    }
+    @Test
+    public void testSendMessage() throws IOException {
+        client1.receive();
+        client2.receive();
+        client2.receive();
+        client1.send("MSG:U2:Hej");
+        assertEquals("MSGRESP:U1:Hej",client2.receive());
+    }
+//    
+    @Test
+    public void testLogout() throws IOException{
+        client1.send("LOGOUT:");
+        assertEquals("CLIENTLIST:U2",client2.receive());
+    }
 }
