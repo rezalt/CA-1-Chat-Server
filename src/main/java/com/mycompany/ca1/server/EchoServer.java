@@ -49,6 +49,7 @@ public class EchoServer {
             } while (keepRunning);
         } catch (IOException ex) {
             Logger.getLogger(Log.LOG_NAME).log(Level.SEVERE, null, ex);
+            
         }
     }
 

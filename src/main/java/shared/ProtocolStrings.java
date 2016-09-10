@@ -85,6 +85,7 @@ public class ProtocolStrings
             if (msg[0].equalsIgnoreCase("LOGIN") && msg.length > 1)
             {
                 username = msg[1];  
+                Logger.getLogger(Log.LOG_NAME).log(Level.INFO, "User: {0}logged in.", msg[1]) ;
             }
            
         }

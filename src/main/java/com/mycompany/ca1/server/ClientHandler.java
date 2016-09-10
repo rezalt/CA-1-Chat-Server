@@ -67,7 +67,18 @@ public class ClientHandler extends Thread
         }
         catch (NoSuchElementException | IOException ex)
         {
-            //Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+            EchoServer.clients.remove(this);
+            sendClientList();
+
+            try
+            {
+                socket.close();
+            }
+            catch (IOException ex1)
+            {
+                Logger.getLogger(Log.LOG_NAME).log(Level.INFO, ex1 + " Removed missing client from list and resent list to all other clients.");
+            }
+           Logger.getLogger(Log.LOG_NAME).log(Level.INFO, ex + " Removed missing client from list and resent list to all other clients.");
         }
     }
 
@@ -84,7 +95,7 @@ public class ClientHandler extends Thread
             clientList += client.getUsername() + ",";
         }
         clientList = clientList.substring(0, clientList.length() - 1);
-        System.out.println("ClientList: " + clientList);
+       
         for (ClientHandler client : EchoServer.clients)
         {
             client.sendMessage(clientList);
